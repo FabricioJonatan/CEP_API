@@ -4,12 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autocomplete de endereço</title>
-    
+    <!-- Css -->
     <link rel="stylesheet" href="./src/css/style.css">
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- Script -->
+    <script src="src/scripts/script.js" defer></script>
 </head>
-<body>
-    <h1>Começando!!</h1>
-
-    <script src="src/scripts/script.js"></script>
+<body id="checkout-page">
+    <div id="fade" class="hide">
+        <div id="loader" class="spinner-border text-info hide" role="status">
+            <span class="visually-hiden">Loading...</span>
+        </div>
+        <div id="message" class="hide">
+            <div class="alert alert-light" role="alert">
+                <h4>Mensage : </h4>
+                <p></p>
+                <button id="closen-message" type="button" class="btn-secondary btn">
+                    fechar
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Status Area -->
+    <header id="status-area">
+        <div id="status-bar">
+            <ul id="status-list">
+                <li class="status-item">
+                 <span class="material-symbols-outlined status-icon">
+                    person
+                </span>
+                 <p>Criação da Conta</p>
+                </li>
+                <li class="status-item">
+                    <span class="material-symbols-outlined status-icon">
+                        location_on
+                    </span>
+                    <p>Endereço</p>
+                </li>
+                <li class="status-item">
+                    <span class="material-symbols-outlined status-icon">
+                        credit_card
+                    </span>
+                    <p>pagamento</p>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!-- Content area -->
+    <main id="contetn-area">
+        <!-- Header Form area -->
+        <div class="form-header">
+            <h1 class="main-title">Cadastre o Endereço</h1>
+            <p class="main-subtitle">Preencha o campo abaixo para que possamos enviar seu produto.</p>
+            <form id="main-form">
+                <label class="placeholder-input" for="cep-input">
+                    Digite seu CEP
+                </label>
+                <input type="text" name="cep" id="cep-input">
+            </form>
+        </div>
+        <!-- Adress form area -->
+        <div id="adress-form-area">
+            <form>
+                <ul id="adress-form-list">
+                    <li class="adress-input-item">
+                        <input class="address-input" type="text" name="road" id="road-input" placeholder="Rua">
+                    </li>
+                    <li class="adress-input-item">
+                        <input class="address-input" type="number" name="house-num" id="num-input" placeholder="Número da Residência">
+                    </li>
+                    <li class="adress-input-item">
+                        <input class="address-input" type="text" name="complement" id="complement-input" placeholder="Complemento">
+                    </li>
+                    <li class="adress-input-item">
+                        <input class="address-input" type="text" name="neighborhood" id="neighborhood-input" placeholder="Bairro">
+                    </li>
+                    <li class="adress-input-item">
+                        <input class="address-input" type="text" name="city" id="city-input" placeholder="Cidade">
+                    </li>
+                    <li class="adress-input-item">
+                        <input class="address-input" type="text" name="state" id="state-input" placeholder="Estado">
+                    </li>
+                </ul>
+                <button type="submit" id="save-btn">
+                    Cadastrar
+                </button>
+            </form>
+        </div>
+    </main>
 </body>
 </html>
