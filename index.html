@@ -13,8 +13,8 @@
 </head>
 <body id="checkout-page">
     <div id="fade" class="hide">
-        <div id="loader" class="spinner-border text-info hide" role="status">
-            <span class="visually-hiden">Loading...</span>
+        <div id="loader" class="hide" role="status">
+            <span class="visually-hiden"></span>
         </div>
         <div id="message" class="hide">
             <div class="alert alert-light" role="alert">
@@ -26,42 +26,42 @@
             </div>
         </div>
     </div>
-    <!-- Status Area -->
-    <header id="status-area">
-        <div id="status-bar">
-            <ul id="status-list">
-                <li class="status-item">
-                 <span class="material-symbols-outlined status-icon">
-                    person
-                </span>
-                 <p>Criação da Conta</p>
-                </li>
-                <li class="status-item">
-                    <span class="material-symbols-outlined status-icon">
-                        location_on
-                    </span>
-                    <p>Endereço</p>
-                </li>
-                <li class="status-item">
-                    <span class="material-symbols-outlined status-icon">
-                        credit_card
-                    </span>
-                    <p>pagamento</p>
-                </li>
-            </ul>
-        </div>
-    </header>
     <!-- Content area -->
-    <main id="contetn-area">
+    <main id="content-area">
+        <!-- Header Status Area -->
+            <div id="status-area">
+                <ul id="status-list">
+                    <li class="status-item">
+                     <span class="material-symbols-outlined status-icon done">
+                        person
+                     </span>
+                     <p class="mq-hide">Criação da Conta</p>
+                    </li>
+                    <li class="status-item">
+                     <span class="material-symbols-outlined status-icon done">
+                        location_on
+                     </span>
+                     <p class="mq-hide">Endereço</p>
+                    </li>
+                    <li class="status-item">
+                     <span class="material-symbols-outlined status-icon">
+                        credit_card
+                     </span>
+                     <p class="mq-hide">pagamento</p>
+                    </li>
+                </ul>
+                <div class="line"></div>
+            </div>
+            <div class="div-line"></div>
         <!-- Header Form area -->
-        <div class="form-header">
-            <h1 class="main-title">Cadastre o Endereço</h1>
+        <div id="form-header">
+            <h1 class="main-title">Cadastre o seu Endereço</h1>
             <p class="main-subtitle">Preencha o campo abaixo para que possamos enviar seu produto.</p>
             <form id="main-form">
                 <label class="placeholder-input" for="cep-input">
                     Digite seu CEP
                 </label>
-                <input type="text" name="cep" id="cep-input">
+                <input type="text" name="cep" id="cep-input" placeholder="Digite seu CEP" minlength="8">
             </form>
         </div>
         <!-- Adress form area -->
@@ -69,27 +69,27 @@
             <form>
                 <ul id="adress-form-list">
                     <li class="adress-input-item">
-                        <input class="address-input" type="text" name="road" id="road-input" placeholder="Rua">
+                        <input class="adress-input" type="text" name="road" id="road-input" placeholder="Rua" disabled required data-input>
                     </li>
                     <li class="adress-input-item">
-                        <input class="address-input" type="number" name="house-num" id="num-input" placeholder="Número da Residência">
+                        <input class="adress-input" type="number" name="house-num" id="num-input" placeholder="Número da Residência" disabled required data-input>
                     </li>
                     <li class="adress-input-item">
-                        <input class="address-input" type="text" name="complement" id="complement-input" placeholder="Complemento">
+                        <input class="adress-input" type="text" name="complement" id="complement-input" placeholder="Complemento" disabled required data-input>
                     </li>
                     <li class="adress-input-item">
-                        <input class="address-input" type="text" name="neighborhood" id="neighborhood-input" placeholder="Bairro">
+                        <input class="adress-input" type="text" name="neighborhood" id="neighborhood-input" placeholder="Bairro" disabled required data-input>
                     </li>
                     <li class="adress-input-item">
-                        <input class="address-input" type="text" name="city" id="city-input" placeholder="Cidade">
+                        <input class="adress-input" type="text" name="city" id="city-input" placeholder="Cidade" disabled required data-input>
                     </li>
                     <li class="adress-input-item">
-                        <input class="address-input" type="text" name="state" id="state-input" placeholder="Estado">
+                        <input class="adress-input" type="text" name="state" id="state-input" placeholder="Estado" disabled required data-input>
                     </li>
+                    <button type="submit" id="save-btn">
+                        Cadastrar
+                    </button>
                 </ul>
-                <button type="submit" id="save-btn">
-                    Cadastrar
-                </button>
             </form>
         </div>
     </main>
