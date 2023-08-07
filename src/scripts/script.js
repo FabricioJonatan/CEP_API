@@ -6,7 +6,8 @@ const mainForm = document.querySelector('#main-form'),
     neighborhoodInput = document.querySelector('#neighborhood-input'),
     cityInput = document.querySelector('#city-input'),
     stateInput = document.querySelector('#state-input'),
-    allInput = document.querySelectorAll('[data-input]')
+    allInput = document.querySelectorAll('[data-input]'),
+    inputList = document.querySelector('#form-list')
 
 // Validate the CPF
 cepInput.addEventListener('keypress', (e) => {
@@ -41,12 +42,10 @@ const getAddress = async (cep) => {
 
 
     if (data.erro){
-        if(!adressInput.hasAttribute("disabled")){
-            toggleDisable()
-        }
-
+        inputList.reset()
         mainForm.reset()
         toggleLoader()
+        toggleDisable(data.erro)
         return
     }
 
@@ -56,13 +55,23 @@ const getAddress = async (cep) => {
     stateInput.value = data.uf
 
     toggleDisable()
+    toggleLoader()
 }
 
 // Add or remove disable atribute
-const toggleDisable = () => {
+const toggleDisable = (err) => {
     allInput.forEach((input) => {
-        if(input.hasAttribute('disabled') && input.value == ''){
+        if(err){
+            input.setAttribute('disabled', 'disabled')
+            input.classList.remove('enable')
+        }
+        else if(input.hasAttribute('disabled') || !input.hasAttribute('disabled') && input.value == ''){
             input.removeAttribute('disabled')
+            input.classList.add('enable')
+        }
+        else{
+            input.setAttribute('disabled', 'disabled')
+            input.classList.remove('enable')
         }
     })
 }

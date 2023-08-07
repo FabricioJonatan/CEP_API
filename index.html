@@ -6,13 +6,14 @@
     <title>Autocomplete de endereço</title>
     <!-- Css -->
     <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/mediaQueries.css">
     <!-- Google Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <!-- Script -->
     <script src="src/scripts/script.js" defer></script>
 </head>
 <body id="checkout-page">
-    <div id="fade" class="hide">
+    <div id="fade" class="hide fade">
         <div id="loader" class="hide" role="status">
             <span class="visually-hiden"></span>
         </div>
@@ -66,7 +67,7 @@
         </div>
         <!-- Adress form area -->
         <div id="adress-form-area">
-            <form>
+            <form id="form-list">
                 <ul id="adress-form-list">
                     <li class="adress-input-item">
                         <input class="adress-input" type="text" name="road" id="road-input" placeholder="Rua" disabled required data-input>

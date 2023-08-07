@@ -26,33 +26,46 @@ body{
     color: var(--text-color);
   }
 
-.hide, .mq-hide{
-    display: none;
+.fade{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    top: 0px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.342);
 }
 
-#loader{
-    width: 100px;
-    height: 100px;
+#fade #loader{
+    position: absolute;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    border-left: solid 2px #25cc88;
-    border-top: solid 5px #25cc88;
+    border-left: solid 5px #25cc88;
+    border-top: solid 10px #25cc88;
     animation: loading infinite 1s;
 }
 
 @keyframes loading {
     0%{
         transform: rotate(0deg);
-        border-left: solid 2px #25cc88;
-        border-top: solid 5px #25cc88;
+        border-left: solid 5px #25cc88;
+        border-top: solid 10px #25cc88;
     }
     50%{
         transform: rotate(180deg);
-        border-left: solid 5px #25cc88;
-        border-top: solid 2px #25cc88;
+        border-left: solid 10px #25cc88;
+        border-top: solid 5px #25cc88;
     }
     100%{
         transform: rotate(360deg);
     }
+}
+
+.hide, .mq-hide{
+    display: none;
 }
 
 /* Content */
@@ -166,6 +179,10 @@ main{
     padding-left: 10px;
     border: solid 2px var(--border-color);
     background-color: var(--secondary-br-color);
+}
+
+#adress-form-area .enable{
+    background-color: transparent;
 }
 
 #adress-form-area #save-btn{

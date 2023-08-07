@@ -1,0 +1,27 @@
+@media screen and (min-width: 600px){
+    .mq-hide{
+        display: block;
+    }
+
+    main{
+        max-width: 750px;
+    }
+
+    .line{
+        width: 71%;
+    }
+
+    #adress-form-area #adress-form-list{
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1px 10px;
+    }
+
+    #adress-form-area .adress-input-item{
+        width: 45%;
+    }
+
+    #save-btn{
+        margin-top: 15px;
+    }
+}
