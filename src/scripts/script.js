@@ -1,4 +1,6 @@
-const mainForm = document.querySelector('#main-form'),
+const
+    // Input and forms elements
+    mainForm = document.querySelector('#main-form'),
     cepInput = document.querySelector('#cep-input'),
     adressInput = document.querySelector('#road-input'),
     houseNumInput = document.querySelector('#num-input'),
@@ -7,8 +9,16 @@ const mainForm = document.querySelector('#main-form'),
     cityInput = document.querySelector('#city-input'),
     stateInput = document.querySelector('#state-input'),
     allInput = document.querySelectorAll('[data-input]'),
-    inputList = document.querySelector('#form-list')
+    inputList = document.querySelector('#form-list'),
+    
+    // Message, alert e loader elements
+    fadeElement = document.querySelector('#fade'),
+    msgBoxElement = document.querySelector('#message'),
+    msgElement = document.querySelector('#msg'),
+    closeBtn = document.querySelector('#closen-message'),
+    loaderElement = document.querySelector('#loader')
 
+    
 // Validate the CPF
 cepInput.addEventListener('keypress', (e) => {
     const onlyNumbers = /\d/g,
@@ -46,9 +56,11 @@ const getAddress = async (cep) => {
         mainForm.reset()
         toggleLoader()
         toggleDisable(data.erro)
+        toggleErro('Este CEP não existe, por favor digite outro!')
         return
     }
 
+    inputList.reset()
     adressInput.value = data.logradouro
     cityInput.value = data.localidade
     neighborhoodInput.value = data.bairro
@@ -65,7 +77,7 @@ const toggleDisable = (err) => {
             input.setAttribute('disabled', 'disabled')
             input.classList.remove('enable')
         }
-        else if(input.hasAttribute('disabled') || !input.hasAttribute('disabled') && input.value == ''){
+        else if(!input.value){
             input.removeAttribute('disabled')
             input.classList.add('enable')
         }
@@ -78,9 +90,20 @@ const toggleDisable = (err) => {
 
 // Show or Hide Loader
 const toggleLoader = () => {
-    const fadeElement = document.querySelector('#fade'),
-        loaderElement = document.querySelector('#loader')
-
     fadeElement.classList.toggle('hide')
     loaderElement.classList.toggle('hide')
+}
+
+// Show or hide Error msg
+const toggleErro = (text) => {
+    fadeElement.classList.toggle('hide')
+    msgBoxElement.classList.toggle('hide')
+    msgElement.innerText = text
+
+    closeBtn.addEventListener('click', closeBtnEvent)
+}
+
+const closeBtnEvent = () => {
+    fadeElement.classList.toggle('hide')
+    msgBoxElement.classList.toggle('hide')
 }

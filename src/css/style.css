@@ -19,7 +19,9 @@
 }
 
 body{
+    height: 100%;
     background-color: var(--bg-color);
+    overflow-x: hidden;
 }
 
 ::placeholder {
@@ -35,7 +37,7 @@ body{
     display: flex;
     top: 0px;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.342);
+    background-color: #00000057;
 }
 
 #fade #loader{
@@ -46,6 +48,47 @@ body{
     border-left: solid 5px #25cc88;
     border-top: solid 10px #25cc88;
     animation: loading infinite 1s;
+}
+
+#fade #message{
+    background-color: #404040;
+    width: 80vw;
+    height: 20vh;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#fade .alert{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#fade .alert h4{
+    margin-bottom: 5px;
+}
+
+#fade .btn-content{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+#fade #closen-message{
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+    height: 30px;
+    width: 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#fade #closen-message:hover{
+    background-color: #126142;
+    color: #dfdfdf;
 }
 
 @keyframes loading {
@@ -67,8 +110,8 @@ body{
 .hide, .mq-hide{
     display: none;
 }
-
-/* Content */
+    
+    /* Content */
 main{
     margin: 20px auto;
     width: 85vw;
@@ -191,4 +234,9 @@ main{
     background-color: var(--secondary-color);
     border: none;
     border-radius: 20px;
+    cursor: pointer;
+}
+
+#adress-form-area #save-btn:hover{
+    background-color: #126142;
 }
