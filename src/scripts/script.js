@@ -16,9 +16,10 @@ const
     msgBoxElement = document.querySelector('#message'),
     msgElement = document.querySelector('#msg'),
     closeBtn = document.querySelector('#closen-message'),
-    loaderElement = document.querySelector('#loader')
+    msgTitle = document.querySelector('#message h4'),
+    loaderElement = document.querySelector('#loader'),
+    doneBtn = document.querySelector('#save-btn')
 
-    
 // Validate the CPF
 cepInput.addEventListener('keypress', (e) => {
     const onlyNumbers = /\d/g,
@@ -46,7 +47,7 @@ const getAddress = async (cep) => {
     cepInput.blur()
 
     const apiUrl = `https://viacep.com.br/ws/${cep}/json`
-
+    
     const response = await fetch(apiUrl)
     const data = await response.json()
 
@@ -56,7 +57,10 @@ const getAddress = async (cep) => {
         mainForm.reset()
         toggleLoader()
         toggleDisable(data.erro)
-        toggleErro('Este CEP não existe, por favor digite outro!')
+        toggleMsg(
+            'Este CEP não existe, por favor digite outro!', 'CEP Inexistente : '
+            )
+        msgTitle.classList.add('error')
         return
     }
 
@@ -65,7 +69,7 @@ const getAddress = async (cep) => {
     cityInput.value = data.localidade
     neighborhoodInput.value = data.bairro
     stateInput.value = data.uf
-
+    
     toggleDisable()
     toggleLoader()
 }
@@ -94,10 +98,24 @@ const toggleLoader = () => {
     loaderElement.classList.toggle('hide')
 }
 
+// Show save msg
+doneBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    if(!cepInput.value){
+        msgTitle.classList.add('alert')
+        toggleMsg('Digite seu CEP para que possamos prosseguir!', 'Digite o CEP : ')
+    }
+    else{
+        msgTitle.classList.add('done')
+        toggleMsg('O cadastro de seu endereço feito com Sucesso!', 'Cadastro Pronto : ')
+    }
+})
+
 // Show or hide Error msg
-const toggleErro = (text) => {
+const toggleMsg = (text, title) => {
     fadeElement.classList.toggle('hide')
     msgBoxElement.classList.toggle('hide')
+    msgTitle.innerText = title
     msgElement.innerText = text
 
     closeBtn.addEventListener('click', closeBtnEvent)
@@ -106,4 +124,5 @@ const toggleErro = (text) => {
 const closeBtnEvent = () => {
     fadeElement.classList.toggle('hide')
     msgBoxElement.classList.toggle('hide')
+    msgTitle.classList.remove('error', 'done', 'alert')
 }

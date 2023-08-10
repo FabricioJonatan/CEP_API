@@ -58,6 +58,16 @@ body{
     padding: 15px;
 }
 
+#fade #message .alert{
+    color: #f8b435;
+}
+#fade #message .error{
+    color: #f35151;
+}
+#fade #message .done{
+    color: #25cc88;
+}
+
 #fade .alert{
     height: 100%;
     width: 100%;
